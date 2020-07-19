@@ -1,24 +1,52 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Member from './components/Member';
+
+const members = [
+  {
+    'id': 'admin',
+    'userName': '어드민',
+    'userEmail': 'admin@test.com',
+    'phoneNm': '010-1234-5678',
+    'regDate': '2020-07-20',
+    'regStatus': 'approved'
+  },
+  {
+    'id': 'dev',
+    'userName': '개발자',
+    'userEmail': 'dev@test.com',
+    'phoneNm': '010-1111-5678',
+    'regDate': '2020-07-20',
+    'regStatus': 'approved'
+  },
+  {
+    'id': 'test',
+    'userName': '테스터',
+    'userEmail': 'test@test.com',
+    'phoneNm': '010-222-5678',
+    'regDate': '2020-07-20',
+    'regStatus': 'approved'
+  }
+]
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {
+        members.map(c => {
+          return (
+            <Member
+              id={c.id}
+              userName={c.userName}
+              userEmail={c.userEmail}
+              phoneNm={c.phoneNm}
+              regDate={c.regDate}
+              regStatus={c.regStatus}
+            ></Member>
+          );
+        })
+      }
     </div>
   );
 }

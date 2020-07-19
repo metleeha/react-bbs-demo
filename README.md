@@ -1,10 +1,15 @@
+# Mono to Micro: Management System Front-Service Demo
+
+게시판 템플릿으로 활용할 수 있는 UI 에셋 
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `yarn start`
+### `yarn start`å
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
