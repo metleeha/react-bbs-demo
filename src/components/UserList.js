@@ -6,7 +6,9 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Title from './Title';
+import Typography from '@material-ui/core/Typography';
+
+import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 
 // Generate Order Data
 function createData(id, date, name, shipTo, paymentMethod, amount) {
@@ -55,18 +57,35 @@ function preventDefault(event) {
   event.preventDefault();
 }
 
+const theme = createMuiTheme({
+  overrides: {
+    MuiTableCell: {
+      root: {
+        textAlign: 'center'
+      }
+    }
+  }
+});
+
 const useStyles = makeStyles((theme) => ({
   seeMore: {
     marginTop: theme.spacing(3),
   },
+  userTable: {
+    marginTop: theme.spacing(3),
+    marginBottom: theme.spacing(1),
+  }
 }));
 
-export default function Members() {
+export default function UserList() {
   const classes = useStyles();
   return (
+    <ThemeProvider theme={theme}>
     <React.Fragment>
-      <Title>User Management</Title>
-      <Table size="small">
+        <Typography component="h4" variant="h4" align="left" color="textPrimary" gutterBottom>
+          User Management
+        </Typography>
+      <Table size="small" className={classes.userTable}>
         <TableHead>
           <TableRow>
               <TableCell>Num</TableCell>
@@ -100,5 +119,6 @@ export default function Members() {
         </Link>
       </div>
     </React.Fragment>
+    </ThemeProvider>
   );
 }
