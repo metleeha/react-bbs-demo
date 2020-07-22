@@ -12,8 +12,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
-import CustomAppBar from './CustomAppBar';
-import Footer from './Footer';
+import CustomAppBar from '../components/CustomAppBar';
+import Footer from '../components/Footer';
 
 const useStyles = makeStyles((theme) => ({
   '@global': {
@@ -81,10 +81,9 @@ export default function SignInPage() {
                     margin="normal"
                     required
                     fullWidth
-                    id="email"
-                    label="Email Address"
-                    name="email"
-                    autoComplete="email"
+                    id="username"
+                    label="User ID"
+                    name="username"
                     autoFocus
                 />
                 <TextField

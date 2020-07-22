@@ -6,9 +6,9 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 
-import CustomAppBar from './CustomAppBar';
-import Footer from './Footer';
-import UserList from './UserList';
+import CustomAppBar from '../components/CustomAppBar';
+import Footer from '../components/Footer';
+import UserList from '../components/UserList';
 
 const useStyles = makeStyles((theme) => ({
   '@global': {
@@ -31,8 +31,8 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     minWidth: 1240
   },
-  userContainer: {
-    paddingTop: theme.spacing(4),
+  Container: {
+    paddingTop: theme.spacing(1),
     paddingBottom: theme.spacing(4),
   },
 }));
@@ -56,7 +56,7 @@ export default function AdminPage() {
       </Container>      
       {/* End hero unit */}
       {/* UsreList unit */}
-      <Container maxWidth="lg" className={classes.userContainer}>
+      <Container maxWidth="lg" className={classes.Container}>
           <Grid container spacing={3}>
             {/* Member List */}
             <Grid item xs={12}>
@@ -67,9 +67,6 @@ export default function AdminPage() {
           </Grid>
       </Container>
       {/* End UsreList unit */}
-      <Container maxWidth="md" component="main">
-        
-      </Container>
       {/* Footer */}
       <Footer />
       {/* End footer */}

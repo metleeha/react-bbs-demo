@@ -50,6 +50,9 @@ export default function CustomAppBar() {
             <Link variant="button" color="textPrimary" href="/users" className={classes.link}>
               Admin
             </Link>
+            <Link variant="button" color="textPrimary" href="/board" className={classes.link}>
+              BBS
+            </Link>
           </nav>
           <Button href="/signin" color="primary" variant="outlined" className={classes.link}>
             Login

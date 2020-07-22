@@ -3,9 +3,12 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 
-import CustomAppBar from './CustomAppBar';
-import Footer from './Footer';
+import CustomAppBar from '../components/CustomAppBar';
+import Footer from '../components/Footer';
+import UserList from '../components/UserList';
 
 const useStyles = makeStyles((theme) => ({
   '@global': {
@@ -21,9 +24,20 @@ const useStyles = makeStyles((theme) => ({
   heroContent: {
     padding: theme.spacing(6, 0, 6),
   },
+  paper: {
+    padding: theme.spacing(2),
+    display: 'flex',
+    overflowX: 'auto',
+    flexDirection: 'column',
+    minWidth: 1240
+  },
+  Container: {
+    paddingTop: theme.spacing(1),
+    paddingBottom: theme.spacing(4),
+  },
 }));
 
-export default function HomePage() {
+export default function BoardPage() {
   const classes = useStyles();
 
   return (
@@ -37,13 +51,22 @@ export default function HomePage() {
           M2m Demo
         </Typography>
         <Typography variant="h5" align="center" color="textSecondary" component="p">
-          this is main page.
+          this is board page.
         </Typography>
-      </Container>
+      </Container>      
       {/* End hero unit */}
-      <Container maxWidth="md" component="main">
-        
+      {/* UsreList unit */}
+      <Container maxWidth="lg" className={classes.Container}>
+          <Grid container spacing={3}>
+            {/* Member List */}
+            <Grid item xs={12}>
+              <Paper className={classes.paper}>
+                게시판 테이블 
+              </Paper>
+            </Grid>
+          </Grid>
       </Container>
+      {/* End UsreList unit */}
       {/* Footer */}
       <Footer />
       {/* End footer */}
