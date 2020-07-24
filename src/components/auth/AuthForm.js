@@ -2,8 +2,6 @@ import React from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
@@ -31,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-  export default function LoginForm() {
+  const AuthForm = () => {
     const classes = useStyles();
   
     return (
@@ -62,11 +60,8 @@ const useStyles = makeStyles((theme) => ({
                       id="password"
                       autoComplete="new-password"
                   />
-                  <FormControlLabel
-                      control={<Checkbox value="remember" color="primary" />}
-                      label="Remember me"
-                  />
                   <Button
+                      href="/login"
                       type="submit"
                       fullWidth
                       variant="contained"
@@ -77,12 +72,12 @@ const useStyles = makeStyles((theme) => ({
                   </Button>
                   <Grid container>
                       <Grid item xs>
-                      <Link href="#" variant="body2">
+                      {/* <Link href="#" variant="body2">
                           Forgot password?
-                      </Link>
+                      </Link> */}
                       </Grid>
                       <Grid item>
-                      <Link href="#" variant="body2">
+                      <Link href="/register" variant="body2">
                           {"Don't have an account? Sign Up"}
                       </Link>
                       </Grid>
@@ -91,3 +86,5 @@ const useStyles = makeStyles((theme) => ({
           </div>
     );
   }
+
+  export default AuthForm;
