@@ -1,4 +1,4 @@
-import produce from '../lib/produce';
+import produce from './lib/produce';
 
 // initial state 
 export const initialState = {

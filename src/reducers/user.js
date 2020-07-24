@@ -1,4 +1,4 @@
-import produce from '../lib/produce';
+import produce from './lib/produce';
 
 // 초기값
 export const initialState = {
