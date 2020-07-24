@@ -6,9 +6,9 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 
-import CustomAppBar from '../components/CustomAppBar';
-import Footer from '../components/Footer';
-import UserList from '../components/UserList';
+import CustomAppBar from '../components/common/CustomAppBar';
+import Footer from '../components/common/Footer';
+import UserList from '../components/user/UserList';
 
 const useStyles = makeStyles((theme) => ({
   '@global': {

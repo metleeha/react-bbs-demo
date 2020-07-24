@@ -4,8 +4,8 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
-import CustomAppBar from '../components/CustomAppBar';
-import Footer from '../components/Footer';
+import CustomAppBar from '../components/common/CustomAppBar';
+import Footer from '../components/common/Footer';
 
 const useStyles = makeStyles((theme) => ({
   '@global': {
@@ -41,9 +41,7 @@ export default function HomePage() {
         </Typography>
       </Container>
       {/* End hero unit */}
-      <Container maxWidth="md" component="main">
-        
-      </Container>
+
       {/* Footer */}
       <Footer />
       {/* End footer */}

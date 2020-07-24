@@ -1,19 +1,14 @@
 import React from 'react';
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Typography from '@material-ui/core/Typography';
 
 import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
-
-// Generate Order Data
-function createData(id, date, name, shipTo, paymentMethod, amount) {
-  return { id, date, name, shipTo, paymentMethod, amount };
-}
 
 const rows = [
   {
@@ -63,6 +58,11 @@ const theme = createMuiTheme({
       root: {
         textAlign: 'center'
       }
+    },
+    MuiButtonBase: {
+      root: {
+        justifyContent: 'left'
+      }
     }
   }
 });
@@ -74,7 +74,7 @@ const useStyles = makeStyles((theme) => ({
   userTable: {
     marginTop: theme.spacing(3),
     marginBottom: theme.spacing(1),
-  }
+  },
 }));
 
 export default function UserList() {
@@ -82,9 +82,10 @@ export default function UserList() {
   return (
     <ThemeProvider theme={theme}>
     <React.Fragment>
-        <Typography component="h4" variant="h4" align="left" color="textPrimary" gutterBottom>
+        <Button color="primary">User Management</Button>
+        {/* <Typography component="h4" variant="h4" align="left" color="textPrimary" gutterBottom>
           User Management
-        </Typography>
+        </Typography> */}
       <Table size="small" className={classes.userTable}>
         <TableHead>
           <TableRow>
