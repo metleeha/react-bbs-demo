@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
+import Alert from '@material-ui/lab/Alert';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -27,6 +28,12 @@ const useStyles = makeStyles((theme) => ({
     submit: {
       margin: theme.spacing(3, 0, 2),
     },
+    alert: {
+      width: '100%',
+      '& > * + *': {
+        marginTop: theme.spacing(2),
+      },
+    }
   }));
 
   const textMap = {
@@ -34,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
     register: 'Sign Up'
   }
 
-  const AuthForm = ({type, form, onChange, onSubmit }) => {
+  const AuthForm = ({type, form, onChange, onSubmit, error }) => {
     const classes = useStyles();
     const text = textMap[type];
     return (
@@ -84,6 +91,11 @@ const useStyles = makeStyles((theme) => ({
                      value={ form.passwordConfirm }
                     />
                   )}
+                  { error && 
+                    <div className={classes.alert}>
+                      <Alert severity="error"><strong>error</strong> — {error}</Alert>
+                    </div>
+                  }
                   <Button
                     type="submit"
                     fullWidth
@@ -92,8 +104,7 @@ const useStyles = makeStyles((theme) => ({
                     className={classes.submit}
                   >
                       { text }
-                  </Button>
-         
+                  </Button>        
                   <Grid container>
                     <Grid item xs>
                     {/* <Link href="#" variant="body2">

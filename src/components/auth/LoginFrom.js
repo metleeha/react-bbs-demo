@@ -1,14 +1,20 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-// import { withRouter } from 'react-router-dom';
-import { changeField, initializeForm } from '../../reducers/auth';
+import { changeField, initializeForm, login } from '../../reducers/auth';
 import AuthForm from './AuthForm';
+import { withRouter } from 'react-router-dom';
+import { check } from '../../reducers/user';
 
-const LoginForm = () => {
+const LoginForm = ({history}) => {
   const dispatch = useDispatch();
-  const { form } = useSelector(({ auth }) => ({
+  const [ error, setError ] = useState(null);
+  const { form, auth, authError, user } = useSelector(({ auth, user }) => ({
     form: auth.login,
+    auth: auth.auth,
+    authError: auth.authError,
+    user: user.user
   }));
+
   // 인풋 변경 이벤트 핸들러
   const onChange = e => {
     const { value, name } = e.target;
@@ -24,8 +30,8 @@ const LoginForm = () => {
   // 폼 등록 이벤트 핸들러
   const onSubmit = e => {
     e.preventDefault();
-    // const { username, password } = form;
-    // dispatch(login({ username, password }));
+    const { username, password } = form;
+    dispatch(login({ username, password }));
   };
 
   // 컴포넌트가 처음 렌더링 될 때 form 을 초기화함
@@ -33,29 +39,24 @@ const LoginForm = () => {
     dispatch(initializeForm('login'));
   }, [dispatch]);
 
-//   useEffect(() => {
-//     if (authError) {
-//       console.log('오류 발생');
-//       console.log(authError);
-//       setError('로그인 실패');
-//       return;
-//     }
-//     if (auth) {
-//       console.log('로그인 성공');
-//       dispatch(check());
-//     }
-//   }, [auth, authError, dispatch]);
+  useEffect(() => {
+    if (authError) {
+      console.log('오류 발생');
+      console.log(authError);
+      setError('로그인 실패')
+      return;
+    }
+    if (auth) {
+      console.log('로그인 성공');
+      dispatch(check());
+    }
+  }, [auth, authError, dispatch]);
 
-//   useEffect(() => {
-//     if (user) {
-//       history.push('/');
-//       try {
-//         localStorage.setItem('user', JSON.stringify(user));
-//       } catch (e) {
-//         console.log('localStorage is not working');
-//       }
-//     }
-//   }, [history, user]);
+  useEffect(() => {
+    if (user) {
+      history.push('/');
+    }
+  }, [history, user]);
 
   return (
     <AuthForm
@@ -63,8 +64,9 @@ const LoginForm = () => {
       form={form}
       onChange={onChange}
       onSubmit={onSubmit}
+      error={error}
     />
   );
 };
 
-export default LoginForm;
+export default withRouter(LoginForm);
