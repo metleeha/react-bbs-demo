@@ -1,6 +1,6 @@
 import { createAction, handleActions } from 'redux-actions';
 import produce from 'immer';
-import { takeLatest } from 'redux-saga/effects';
+import { takeLatest, call } from 'redux-saga/effects';
 import createRequestSaga, { 
     createRequestActionTypes 
 } from '../sagas/createRequestSaga';
@@ -47,16 +47,27 @@ export const login = createAction(LOGIN, ({ username, password }) => ({
 }));
 export const tempSetUser = createAction(TEMP_SET_USER, user => user);
 export const check = createAction(CHECK);
+export const logout = createAction(LOGOUT);
 
 // saga 생성
 const registerSaga = createRequestSaga(REGISTER, authAPI.register);
 const loginSaga = createRequestSaga(LOGIN, authAPI.login);
 const checkSaga = createRequestSaga(CHECK, authAPI.check);
 
+function* logoutSaga() {
+    try {
+        yield call(authAPI.logout);
+        localStorage.removeItem('user');
+    } catch(e) {
+        console.log(e);
+    }
+}
+
 export function* authSaga() {
   yield takeLatest(REGISTER, registerSaga);
   yield takeLatest(LOGIN, loginSaga);
   yield takeLatest(CHECK, checkSaga);
+  yield takeLatest(LOGOUT, logoutSaga);
 }
 
 const initialState = {
@@ -114,18 +125,18 @@ const auth = handleActions(
             user,
           }),
         [CHECK_SUCCESS]: (state, { payload: user }) => ({
-        ...state,
-        user,
-        checkError: null,
+            ...state,
+            user,
+            checkError: null,
         }),
         [CHECK_FAILURE]: (state, { payload: error }) => ({
-        ...state,
-        user: null,
-        checkError: error,
+            ...state,
+            user: null,
+            checkError: error,
         }),
         [LOGOUT]: state => ({
-        ...state,
-        user: null,
+            ...state,
+            user: null,
         }),
     },
     initialState,

@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Header = ({ user }) => {
+const Header = ({ user, onLogout }) => {
   const classes = useStyles();
 
   return (
@@ -59,7 +59,7 @@ const Header = ({ user }) => {
             <Button variant="text" color="primary">
               {user.username}
             </Button>
-            <Button href="/login" color="primary" variant="contained" className={classes.link}>
+            <Button onClick={onLogout} href="/" color="primary" variant="contained" className={classes.link}>
                 LogOut
             </Button>
             </div>
