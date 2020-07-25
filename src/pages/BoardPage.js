@@ -4,10 +4,10 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 
 import HeaderContainer from '../components/common/HeaderContainer';
 import Footer from '../components/common/Footer';
+import FeaturedPost from '../components/post/FeaturedPost';
 
 const useStyles = makeStyles((theme) => ({
   '@global': {
@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
     display: 'flex',
-    overflowX: 'auto',
+    overflow: 'auto',
     flexDirection: 'column',
   },
   Container: {
@@ -34,6 +34,34 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: theme.spacing(4),
   },
 }));
+
+const featuredPosts = [
+  {
+    title: 'Arrcus Expands Network Services Spanning Hybrid Clouds',
+    date: 'July 23',
+    description:
+      'Arrcus has added virtualized distributed routing (VDR) and multi-cloud networking (MCN) capabilities to ArcOS'
+  },
+  {
+    title: 'Revisiting 2020 Cloud Predictions in Light of COVID-19',
+    date: 'July 20',
+    description:
+      'Back when the technology industry made its cloud predictions for 2020, no one forecasted the impending impact of COVID-19.'
+  },
+  {
+    title: 'OpenAI’s new GPT-3 language explained in under 3 minutes',
+    date: 'Jul 20',
+    description:
+      'With GPT-3, I built a layout generator where you just describe any layout you want, and it generates the JSX code for you.'
+  },
+  {
+    title: 'Evolving Tech Stack Enables High Performance Ecommerce',
+    date: 'Jul 23',
+    description:
+      'The technologies powering the web and mobile applications never stop evolving. Each new phase creates opportunities for businesses.'
+  },
+
+];
 
 export default function BoardPage() {
   const classes = useStyles();
@@ -53,15 +81,12 @@ export default function BoardPage() {
         </Typography>
       </Container>      
       {/* End hero unit */}
-      {/* UsreList unit */}
+      {/* Posts List unit */}
       <Container maxWidth="md" className={classes.Container}>
           <Grid container spacing={3}>
-            {/* Member List */}
-            <Grid item xs={12}>
-              <Paper className={classes.paper}>
-                게시판 테이블 
-              </Paper>
-            </Grid>
+              {featuredPosts.map((post) => (
+                <FeaturedPost key={post.title} post={post} />
+              ))}
           </Grid>
       </Container>
       {/* End UsreList unit */}

@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Table from '@material-ui/core/Table';
@@ -48,9 +47,9 @@ const rows = [
   }
 ];
 
-function preventDefault(event) {
-  event.preventDefault();
-}
+// function preventDefault(event) {
+//   event.preventDefault();
+// }
 
 const theme = createMuiTheme({
   overrides: {
@@ -113,11 +112,11 @@ export default function UserList() {
           ))}
         </TableBody>
       </Table>
-      <div className={classes.seeMore}>
+      {/* <div className={classes.seeMore}>
         <Link color="primary" href="#" onClick={preventDefault}>
           See more users
         </Link>
-      </div>
+      </div> */}
     </React.Fragment>
     </ThemeProvider>
   );
