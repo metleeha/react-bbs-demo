@@ -6,7 +6,7 @@ import Container from '@material-ui/core/Container';
 
 import CustomAppBar from '../components/common/CustomAppBar';
 import Footer from '../components/common/Footer';
-import AuthForm from '../components/auth/AuthForm';
+import LoginForm from '../components/auth/LoginFrom';
 
 const useStyles = makeStyles((theme) => ({
   '@global': {
@@ -44,7 +44,7 @@ export default function LogInPage() {
       {/* End hero unit */}
       {/* Signin Unit */}
       <Container maxWidth="xs" component="main">
-        <AuthForm type="login" />
+        <LoginForm />
       </Container>
       {/* End Signin Unit */}
       {/* Footer */}

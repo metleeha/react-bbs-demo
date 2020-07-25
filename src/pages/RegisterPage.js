@@ -6,7 +6,7 @@ import Container from '@material-ui/core/Container';
 
 import CustomAppBar from '../components/common/CustomAppBar';
 import Footer from '../components/common/Footer';
-import AuthForm from '../components/auth/AuthForm';
+import RegisterForm from '../components/auth/RegisterForm';
 
 const useStyles = makeStyles((theme) => ({
   '@global': {
@@ -42,11 +42,11 @@ export default function RegisterPage() {
         </Typography>
       </Container>
       {/* End hero unit */}
-      {/* Signin Unit */}
+      {/* SignUp Unit */}
       <Container maxWidth="xs" component="main">
-        <AuthForm type="register" />
+        <RegisterForm />
       </Container>
-      {/* End Signin Unit */}
+      {/* End SignUp Unit */}
       {/* Footer */}
       <Footer />
       {/* End footer */}

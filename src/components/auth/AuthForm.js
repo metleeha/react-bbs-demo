@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
     register: 'Sign Up'
   }
 
-  const AuthForm = ({type}) => {
+  const AuthForm = ({type, form, onChange, onSubmit }) => {
     const classes = useStyles();
     const text = textMap[type];
     return (
@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
               <Avatar className={classes.avatar}>
               <LockOutlinedIcon />
               </Avatar>
-              <form className={classes.form} noValidate>
+              <form className={classes.form} onSubmit={onSubmit} noValidate>
                   <TextField
                       variant="outlined"
                       margin="normal"
@@ -53,6 +53,8 @@ const useStyles = makeStyles((theme) => ({
                       name="username"
                       autoFocus
                       autoComplete="username"
+                      onChange={onChange}
+                      value={ form.username }
                   />
                   <TextField
                       variant="outlined"
@@ -64,6 +66,8 @@ const useStyles = makeStyles((theme) => ({
                       type="password"
                       id="password"
                       autoComplete="new-password"
+                      onChange={onChange}
+                      value={ form.password }
                   />
                   { type === 'register' && (
                      <TextField
@@ -76,6 +80,8 @@ const useStyles = makeStyles((theme) => ({
                      type="password"
                      id="passwordConfirm"
                      autoComplete="new-password"
+                     onChange={onChange}
+                     value={ form.passwordConfirm }
                     />
                   )}
                   { type === 'login' ? (
