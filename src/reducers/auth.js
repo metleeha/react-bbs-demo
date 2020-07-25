@@ -1,10 +1,12 @@
 import { createAction, handleActions } from 'redux-actions';
 import produce from 'immer';
+import createRequestSaga, { createRequestActionTypes } from '../sagas/createRequestSaga';
 
-// actions 
+// actions 선언 
 const CHANGE_FIELD = 'auth/CHANGE_FIELD';
 const INITIALIZE_FORM = 'auth/INITIALIZE_FORM';
 
+// actions 선언 함수 
 export const changeField = createAction(
     CHANGE_FIELD,
     ({form, key, value}) => ({
@@ -14,6 +16,7 @@ export const changeField = createAction(
     }),
 );
 
+// actions 초기화 함수 
 export const initializeForm = createAction(INITIALIZE_FORM, form => form); //register / login
 
 const initialState = {
@@ -28,6 +31,7 @@ const initialState = {
     }
 }
 
+// actions 핸들링 
 const auth = handleActions(
     {
         [CHANGE_FIELD]: (state, { payload: { form, key, value } }) => 
