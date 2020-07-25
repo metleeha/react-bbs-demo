@@ -29,9 +29,14 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-  const AuthForm = () => {
+  const textMap = {
+    login: 'Sign In',
+    register: 'Sign Up'
+  }
+
+  const AuthForm = ({type}) => {
     const classes = useStyles();
-  
+    const text = textMap[type];
     return (
           <div className={classes.paper}>
               <Avatar className={classes.avatar}>
@@ -60,17 +65,44 @@ const useStyles = makeStyles((theme) => ({
                       id="password"
                       autoComplete="new-password"
                   />
-                  <Button
-                      href="/login"
+                  { type === 'register' && (
+                     <TextField
+                     variant="outlined"
+                     margin="normal"
+                     required
+                     fullWidth
+                     name="passwordConfirm"
+                     label="PasswordConfirm"
+                     type="password"
+                     id="passwordConfirm"
+                     autoComplete="new-password"
+                    />
+                  )}
+                  { type === 'login' ? (
+                    <Button
+                    href="/login"
+                    type="submit"
+                    fullWidth
+                    variant="contained"
+                    color="primary"
+                    className={classes.submit}
+                    >
+                        { text }
+                    </Button>
+                  ) : (
+                    <Button
+                      href="/register"
                       type="submit"
                       fullWidth
                       variant="contained"
                       color="primary"
                       className={classes.submit}
                   >
-                      Sign In
-                  </Button>
-                  <Grid container>
+                      { text }
+                    </Button>
+                  )}
+                  { type === 'login' && (
+                    <Grid container>
                       <Grid item xs>
                       {/* <Link href="#" variant="body2">
                           Forgot password?
@@ -81,7 +113,8 @@ const useStyles = makeStyles((theme) => ({
                           {"Don't have an account? Sign Up"}
                       </Link>
                       </Grid>
-                  </Grid>
+                    </Grid>
+                  )}
               </form>
           </div>
     );

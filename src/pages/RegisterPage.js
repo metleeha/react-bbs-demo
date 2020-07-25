@@ -44,7 +44,7 @@ export default function RegisterPage() {
       {/* End hero unit */}
       {/* Signin Unit */}
       <Container maxWidth="xs" component="main">
-        <AuthForm />
+        <AuthForm type="register" />
       </Container>
       {/* End Signin Unit */}
       {/* Footer */}

@@ -44,7 +44,7 @@ export default function LogInPage() {
       {/* End hero unit */}
       {/* Signin Unit */}
       <Container maxWidth="xs" component="main">
-        <AuthForm />
+        <AuthForm type="login" />
       </Container>
       {/* End Signin Unit */}
       {/* Footer */}
