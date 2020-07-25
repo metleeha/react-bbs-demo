@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CustomAppBar() {
+const Header = ({ user }) => {
   const classes = useStyles();
 
   return (
@@ -54,12 +54,24 @@ export default function CustomAppBar() {
               BBS
             </Link>
           </nav>
-          <Button href="/login" color="primary" variant="outlined" className={classes.link}>
-            Login
-          </Button>
+          {user ? (
+            <div>
+            <Button variant="text" color="primary">
+              {user.username}
+            </Button>
+            <Button href="/login" color="primary" variant="contained" className={classes.link}>
+                LogOut
+            </Button>
+            </div>
+          ):(
+            <Button href="/login" color="primary" variant="contained" className={classes.link}>
+                Login
+            </Button>
+          )}
         </Toolbar>
       </AppBar>
-
     </React.Fragment>
   );
 }
+
+export default Header;

@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -82,10 +82,9 @@ export default function UserList() {
   return (
     <ThemeProvider theme={theme}>
     <React.Fragment>
-        <Button color="primary">User Management</Button>
-        {/* <Typography component="h4" variant="h4" align="left" color="textPrimary" gutterBottom>
+        <Typography variant="button" align="left" color="textPrimary" gutterBottom>
           User Management
-        </Typography> */}
+        </Typography>
       <Table size="small" className={classes.userTable}>
         <TableHead>
           <TableRow>

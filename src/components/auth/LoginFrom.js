@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { changeField, initializeForm, login } from '../../reducers/auth';
+import { changeField, initializeForm, login, check } from '../../reducers/auth';
 import AuthForm from './AuthForm';
 import { withRouter } from 'react-router-dom';
-import { check } from '../../reducers/user';
 
 const LoginForm = ({history}) => {
   const dispatch = useDispatch();
   const [ error, setError ] = useState(null);
-  const { form, auth, authError, user } = useSelector(({ auth, user }) => ({
+  const { form, auth, authError, user } = useSelector(({ auth }) => ({
     form: auth.login,
     auth: auth.auth,
     authError: auth.authError,
-    user: user.user
+    user: auth.user
   }));
 
   // 인풋 변경 이벤트 핸들러

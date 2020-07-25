@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
-import CustomAppBar from '../components/common/CustomAppBar';
+import HeaderContainer from '../components/common/HeaderContainer';
 import Footer from '../components/common/Footer';
 
 const useStyles = makeStyles((theme) => ({
@@ -30,7 +30,7 @@ export default function HomePage() {
     <React.Fragment>
       <CssBaseline />
       {/* AppBar unit */}
-      <CustomAppBar />
+      <HeaderContainer />
       {/* Hero unit */}
       <Container maxWidth="sm" component="main" className={classes.heroContent}>
         <Typography component="h1" variant="h3" align="center" color="textPrimary" gutterBottom>

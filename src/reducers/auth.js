@@ -19,6 +19,13 @@ const [LOGIN, LOGIN_SUCCESS, LOGIN_FAILURE] = createRequestActionTypes(
     'auth/LOGIN'
 );
 
+const TEMP_SET_USER = 'auth/TEMP_SET_USER'; // 새로고침 이후 임시 로그인 처리
+// 회원 정보 확인
+const [CHECK, CHECK_SUCCESS, CHECK_FAILURE] = createRequestActionTypes(
+  'auth/CHECK',
+);
+const LOGOUT = 'auth/LOGOUT';
+
 export const changeField = createAction(
     CHANGE_FIELD,
     ({form, key, value}) => ({
@@ -38,13 +45,18 @@ export const login = createAction(LOGIN, ({ username, password }) => ({
     username,
     password
 }));
+export const tempSetUser = createAction(TEMP_SET_USER, user => user);
+export const check = createAction(CHECK);
 
 // saga 생성
 const registerSaga = createRequestSaga(REGISTER, authAPI.register);
 const loginSaga = createRequestSaga(LOGIN, authAPI.login);
+const checkSaga = createRequestSaga(CHECK, authAPI.check);
+
 export function* authSaga() {
   yield takeLatest(REGISTER, registerSaga);
   yield takeLatest(LOGIN, loginSaga);
+  yield takeLatest(CHECK, checkSaga);
 }
 
 const initialState = {
@@ -58,7 +70,9 @@ const initialState = {
         password: '',
     },
     auth: null,
-    authError: null
+    authError: null,
+    user: null,
+    checkError: null
 }
 
 // actions 핸들링 
@@ -94,7 +108,25 @@ const auth = handleActions(
         [LOGIN_FAILURE]: (state, { payload: error }) => ({
             ...state,
             authError: error
-        })
+        }),
+        [TEMP_SET_USER]: (state, { payload: user }) => ({
+            ...state,
+            user,
+          }),
+        [CHECK_SUCCESS]: (state, { payload: user }) => ({
+        ...state,
+        user,
+        checkError: null,
+        }),
+        [CHECK_FAILURE]: (state, { payload: error }) => ({
+        ...state,
+        user: null,
+        checkError: error,
+        }),
+        [LOGOUT]: state => ({
+        ...state,
+        user: null,
+        }),
     },
     initialState,
 );

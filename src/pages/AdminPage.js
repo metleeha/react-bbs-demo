@@ -6,7 +6,7 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 
-import CustomAppBar from '../components/common/CustomAppBar';
+import HeaderContainer from '../components/common/HeaderContainer';
 import Footer from '../components/common/Footer';
 import UserList from '../components/admin/UserList';
 
@@ -44,7 +44,7 @@ export default function AdminPage() {
     <React.Fragment>
       <CssBaseline />
       {/* AppBar unit */}
-      <CustomAppBar />
+      <HeaderContainer/>
       {/* Hero unit */}
       <Container maxWidth="sm" component="main" className={classes.heroContent}>
         <Typography component="h1" variant="h3" align="center" color="textPrimary" gutterBottom>
