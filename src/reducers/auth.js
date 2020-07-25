@@ -16,7 +16,7 @@ const [REGISTER, REGISTER_SUCCESS, REGISTER_FAILURE] = createRequestActionTypes(
   );
   
 const [LOGIN, LOGIN_SUCCESS, LOGIN_FAILURE] = createRequestActionTypes(
-'auth/LOGIN'
+    'auth/LOGIN'
 );
 
 export const changeField = createAction(
@@ -75,9 +75,9 @@ const auth = handleActions(
         }),
         // 회원가입 성공
         [REGISTER_SUCCESS]: (state, { payload: auth }) => ({
-        ...state,
-        authError: null,
-        auth
+            ...state,
+            authError: null,
+            auth
         }),
         // 회원가입 실패
         [REGISTER_FAILURE]: (state, { payload: error }) => ({

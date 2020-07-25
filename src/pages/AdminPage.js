@@ -8,7 +8,7 @@ import Paper from '@material-ui/core/Paper';
 
 import CustomAppBar from '../components/common/CustomAppBar';
 import Footer from '../components/common/Footer';
-import UserList from '../components/user/UserList';
+import UserList from '../components/admin/UserList';
 
 const useStyles = makeStyles((theme) => ({
   '@global': {

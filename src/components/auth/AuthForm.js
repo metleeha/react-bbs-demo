@@ -84,43 +84,34 @@ const useStyles = makeStyles((theme) => ({
                      value={ form.passwordConfirm }
                     />
                   )}
-                  { type === 'login' ? (
-                    <Button
-                    href="/login"
+                  <Button
                     type="submit"
                     fullWidth
                     variant="contained"
                     color="primary"
                     className={classes.submit}
-                    >
-                        { text }
-                    </Button>
-                  ) : (
-                    <Button
-                      href="/register"
-                      type="submit"
-                      fullWidth
-                      variant="contained"
-                      color="primary"
-                      className={classes.submit}
                   >
                       { text }
-                    </Button>
-                  )}
-                  { type === 'login' && (
-                    <Grid container>
-                      <Grid item xs>
-                      {/* <Link href="#" variant="body2">
-                          Forgot password?
-                      </Link> */}
-                      </Grid>
-                      <Grid item>
-                      <Link href="/register" variant="body2">
-                          {"Don't have an account? Sign Up"}
-                      </Link>
-                      </Grid>
+                  </Button>
+         
+                  <Grid container>
+                    <Grid item xs>
+                    {/* <Link href="#" variant="body2">
+                        Forgot password?
+                    </Link> */}
                     </Grid>
-                  )}
+                    <Grid item>
+                    { type === 'login' ? (
+                      <Link href="/register" variant="body2">
+                      {"Don't have an account? Sign Up"}
+                  </Link>
+                    ):(
+                      <Link href="/login" variant="body2">
+                        {"Back to Sign In"}
+                      </Link>
+                    )}
+                    </Grid>
+                  </Grid>
               </form>
           </div>
     );
