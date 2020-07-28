@@ -6,7 +6,7 @@ import Container from '@material-ui/core/Container';
 
 import HeaderContainer from '../components/common/HeaderContainer';
 import Footer from '../components/common/Footer';
-import LoginForm from '../components/auth/LoginFrom';
+import LoginForm from '../components/auth/LoginForm';
 
 const useStyles = makeStyles((theme) => ({
   '@global': {
