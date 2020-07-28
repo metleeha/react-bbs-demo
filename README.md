@@ -39,7 +39,9 @@
 │   │   └── users.js
 │   └── createRequestSaga.js
 ├── serviceWorker.js
-└── store
+├── store
+└── ├── configureStore.js
+
 ```
 
 
