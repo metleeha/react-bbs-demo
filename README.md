@@ -40,7 +40,7 @@
 │   └── createRequestSaga.js
 ├── serviceWorker.js
 ├── store
-└── ├── configureStore.js
+└── └── configureStore.js
 
 ```
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Table from '@material-ui/core/Table';
@@ -9,47 +9,47 @@ import TableRow from '@material-ui/core/TableRow';
 
 import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 
-const rows = [
-  {
-    "userId": "admin",
-    "userNm": "어드민",
-    "userZip": "100775",
-    "userAdres": "서울 중구 무교동 한국정보화진흥원",
-    "userEmail": "egovframesupport@gmail.com"
-  },
-  {
-    "userId": "TEST1",
-    "userNm": "테스트1",
-    "userZip": "100775",
-    "userAdres": "서울 중구 무교동 한국정보화진흥원",
-    "userEmail": "egovframesupport@gmail.com"
-  },
-  {
-    "userId": "USER",
-    "userNm": "일반회원",
-    "userZip": "100775",
-    "userAdres": "서울 중구 무교동 한국정보화진흥원",
-    "userEmail": "egovframesupport@gmail.com"
-  },
-  {
-    "userId": "ENTERPRISE",
-    "userNm": "NIA",
-    "userZip": "100775",
-    "userAdres": "서울특별시 중구 청계천로 14 - 0 한국정보사회진흥원",
-    "userEmail": "egovframesupport@gmail.com"
-  },
-  {
-    "userId": "webmaster",
-    "userNm": "웹마스터",
-    "userZip": "100775",
-    "userAdres": "서울특별시 중구 청계천로 14 - 0 한국정보사회진흥원",
-    "userEmail": "egovframesupport@gmail.com"
-  }
-];
+import { useDispatch, useSelector } from 'react-redux';
+import { listUsers } from '../../reducers/admin';
 
-// function preventDefault(event) {
-//   event.preventDefault();
-// }
+// const rows = [
+//   {
+//     "userId": "admin",
+//     "userNm": "어드민",
+//     "userZip": "100775",
+//     "userAdres": "서울 중구 무교동 한국정보화진흥원",
+//     "userEmail": "egovframesupport@gmail.com"
+//   },
+//   {
+//     "userId": "TEST1",
+//     "userNm": "테스트1",
+//     "userZip": "100775",
+//     "userAdres": "서울 중구 무교동 한국정보화진흥원",
+//     "userEmail": "egovframesupport@gmail.com"
+//   },
+//   {
+//     "userId": "USER",
+//     "userNm": "일반회원",
+//     "userZip": "100775",
+//     "userAdres": "서울 중구 무교동 한국정보화진흥원",
+//     "userEmail": "egovframesupport@gmail.com"
+//   },
+//   {
+//     "userId": "ENTERPRISE",
+//     "userNm": "NIA",
+//     "userZip": "100775",
+//     "userAdres": "서울특별시 중구 청계천로 14 - 0 한국정보사회진흥원",
+//     "userEmail": "egovframesupport@gmail.com"
+//   },
+//   {
+//     "userId": "webmaster",
+//     "userNm": "웹마스터",
+//     "userZip": "100775",
+//     "userAdres": "서울특별시 중구 청계천로 14 - 0 한국정보사회진흥원",
+//     "userEmail": "egovframesupport@gmail.com"
+//   }
+// ];
+
 
 const theme = createMuiTheme({
   overrides: {
@@ -78,6 +78,20 @@ const useStyles = makeStyles((theme) => ({
 
 export default function UserList() {
   const classes = useStyles();
+
+  const dispatch = useDispatch();
+  const { users, error } = useSelector(({ admin }) => ({
+    users: admin.users,
+    error: admin.error,
+  }))
+
+  useEffect(() => {
+    if (users.length === 0 || !users) {
+      dispatch(listUsers());
+    } 
+  }, [users, error, dispatch])
+
+  // console.log(users);
   return (
     <ThemeProvider theme={theme}>
     <React.Fragment>
@@ -98,14 +112,14 @@ export default function UserList() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row, i) => (
-            <TableRow key={row.userId}>
+          {users.map((users, i) => (
+            <TableRow key={users.userId}>
               <TableCell>{i + 1}</TableCell>
-              <TableCell>{row.userId}</TableCell>
-              <TableCell>{row.userNm}</TableCell>
-              <TableCell>{row.userEmail}</TableCell>
-              <TableCell>{row.userAdres}</TableCell> 
-              <TableCell>{row.userZip}</TableCell>  
+              <TableCell>{users.userId}</TableCell>
+              <TableCell>{users.userNm}</TableCell>
+              <TableCell>{users.userEmail}</TableCell>
+              <TableCell>{users.userAdres}</TableCell> 
+              <TableCell>{users.userZip}</TableCell>  
               <TableCell>2020-07-24</TableCell>
               <TableCell>회원 가입 승인</TableCell>
             </TableRow>

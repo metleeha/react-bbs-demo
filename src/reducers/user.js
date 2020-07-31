@@ -3,7 +3,6 @@ import { takeLatest } from 'redux-saga/effects';
 import createRequestSaga, { 
     createRequestActionTypes 
 } from '../sagas/createRequestSaga';
-import * as userAPI from '../sagas/api/users';
 
 const TEMP_SET_USER = 'user/TEMP_SET_USER'; // 새로고침 이후 임시 로그인 처리
 // 회원 정보 확인

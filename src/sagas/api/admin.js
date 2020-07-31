@@ -6,5 +6,5 @@ export const users_get_all = () =>
 
 // 유저 아이디로 상세 조회
 export const users_get_user = userId =>
-  client.get(`/api/users/register/${userId}`);
+  client.get(`/api/users/${userId}`);
 
